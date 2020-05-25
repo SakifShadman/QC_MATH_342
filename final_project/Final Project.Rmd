@@ -1,0 +1,445 @@
+---
+title: "Apartment Selling Price Model For Queens"
+author: "SAKIF SHADMAN"
+date: "May 24, 2020"
+output:
+  word_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+#install.packages("knitr")
+library(knitr)
+library('tinytex')
+```
+
+
+Abstract: Machine Learning algorithm are playing very important in any walk of life. Machine learning have good predict power and widely used by manufactures and industrialist to promote their business and products. In our proposed project, we used the machine learning algorithms for sale prediction of the houses in Queens, New York. Random Forest , Linear Regression and Regression tree model algorithm are used to predict the selling price of the houses. Selling prices of the house is the regression task so the proposed algorithm can handle both regression and classification problems. The dataset used in this study is taken from MLSI website. The dataset is in raw format and needs too much preprocessing. The supervised machine learning algorithm out perform on the proposed dataset and shows a very good results in form of R2 and MSE. Random Forest and decision fit well over the dataset and does not show any over-fitting or under-fitting problem. Machine Learning algorithms are commonly used for sales analysis for future forecasting and predictive modeling.
+
+
+Introduction: The sale price analysis is very important and necessary step for the promotion of business. According to view of sale prices prediction, stoke-holders and business man invest their money on those types of business where they have knowledge that they will get large profit and turnout. The sale future forecasting and analysis of sale prices is mostly examined through the help of Machine Learning based algorithms. Machine learning has three main branches 1. supervised 2. unsupervised and 3. reinforcement learning. Supervised machine learning has two main categories classification and regression. Unsupervised machine learning deals the clustering problem. Classification problems are used when the target variable is discrete and regression technique is used when the target variable is continuous. Our target variable sale price is continuous. So our problem is related to regression task. We used three machine learning algorithms Random Forest, Linear Regression and Regression Tree modeling. Linear Regression model is very famous for regression problem as and its ability to solve only regression tasks. Random Forest is ensemble algorithm that is combination of different Regression Tree modeling. Random Forest can handle classification as well as regression problem. Regression Tree modeling is able to handle the classification as well as regression problem. In Regression Tree modeling, over-fitting and under-fitting can be handled through the pruning method. The sale prices of house prediction model dataset is raw data. It contain multiple unnecessary attributes that are irrelevant categorical features. We extract only relevant features from the main dataset and build subset of new dataset that contain only important features. In the subset dataset, our target variable is sale_price of the house. we split the dataset into training and test with the ratio 3:7. Then the model is trained on the training data and predicted on the test data. The model performance is evaluated on the metrics used for regression problems like MSE, Residual, RMSE and R2. 
+ 
+ 
+Dataset Description: Dataset is extracted from MLSI website which provide the update row information of house sale prices based on observed variables. The dataset contain 55 column with 2230 instances. The dataset contain lot of categorical features that unnecessary. The dataset also contain the outlier and values in the form of others. The dataset contain the lot of missing values. Each attribute contain different types of invalid values. So handling such type of dataset is also a challenging task.
+  
+  
+Featurization: This is important step to be performed on the attribute before passing values to machine learning model. The mostly people do mistake in conversion of attributes. They just convert the attribute direct into numeric form in which original value of attribute does not remain same. We adopt the different strategy for each attribute so that the original information of attribute does not loss.
+
+ 1. We removed the dollar sign from the attributes and does not directly convert into numeric form.
+ 2. After removing the dollar sign the attribute contain the character values, we then used the numeric function to convert into double value based function
+ 3. The categorical based function are directly converted into numeric form as if we performed the as.charcter function before as.numeric function, all the attribute loss their values and attribute only contain the missing values.
+ 4. Some attributes were actually as factor but they were represented as numeric. So convert their data type from numeric to factor like num_floor_in_building, num_bedrooms etc.
+ 
+ 
+Errors and Miss values: We performed two method for handling the missing values.
+
+ 1. In first method we observed that attribute who has small number of missing values, we removed the records on the bases of those attributes.
+ 2. In second strategy, The attribute that contain large number of missing values, we used mean method to maintain their values. For the validation checking of the dataset we used the sapply function to checking the missing values and summary function to check the correct values in the dataset.
+
+
+Modeling: We used there algorithm in the proposed project. Regression Tree modeling, Linear Regression model and Random Forest. These aglorithms have ability to handle the classification as well as regression problem. First we split the dataset into two parts training and test part. The training size is 70 while test is 30.  We then trained the model on training data and evaluate the result on test data. We also get infomation about the importance feature of each algorithms. Then we passed these importance features to the model as and trained on these feature and shows the good result. Most of the machine learning applications in real estate price estimation are based on Artificial Neural Networks (ANN) algorithms. Random forest used for classification and regression based on a forest of trees using random inputs, caret for data splitting and generating stratified bootstrap samples, gstat for cross validation, psych for principal component analysis. Regression Tree modeling also have ability to the classification and regresson problems. Regression Tree modeling perform well for sale pice os the houses. Used the Regression Tree modeling technique for exploring the relationship between house prices and housing characteristics, which aided the determination of the most important variables of housing prices and predicted housing prices.
+ 
+ 
+Regression Tree model: This model has the ability to regression problem of sale_price prediction based on num_total_rooms, num_full_bathrooms, num_floors_in_building, num_bedrooms. The variable importance plot is drawn as shown in code through barplot and shown which features are important for predicting the model.
+ 
+ 
+Linear Regression Model: Linear regression has just ability to solve the the regression problem. It is very famous for solving regression tasks. In this project linear regression model is training on the following features kitchen_type, num_floors_in_building, num_bedrooms, coop_condo, total_taxes. The OLS summary of Linear regression model shows that model is fitted well over the training. The residual error is 77100 that is very good and have low loss function and P value is also less than five. Our algorithm shows that it rejects the null hypothesis. The R-Squared error 0.2333 that shows the model have good accuracy. F-statistics of proposed model is also high that 17.54. The very importance feature model shows is cope_condo and num-bedrooms.
+ 
+ 
+Random Forest Model: It is ensemble based algorithm that is made from different algorithms. It can handle regression and classification tasks efficiently. Random forest is parametric model whole number of estimates varies from 10 to 100. The model shows the highest R squired value that shows that model is very fitted over the training data and test data. The model does not overfitting and under-fitting problem. The random forest model show the importance feature is Kitchen type thats value is above 4 and has major parts in predicting the random forest.
+ 
+ 
+Random Forest Results: R2 value shows that our model have very good accuracy and fitted well on train and test data. MSE is mean squired error that how many times our algorithm provide the wrong results while its actual result was different. The rout mean squared error is just square of  MSE. We used default number of parameter 100 so that iteration should take place automatically.
+ 
+ MSE: 4400174.
+ RMSE: 6633381.
+ R2: 0.4324472.
+ 
+ 
+Conclusion: From this we get knowledge that how to handle large row dataset, how to features the attributes and how handle the model. We also get knowledge that machine learning are how to be trained on regression problem. We get more information about the importance feature of algorithms and shows their results visualization graphs. Our algorithm outperformed on such raw dataset and get insight knowledge from dataset. Random Forest performance is better than decision tree for prediction of sale prices.
+  
+  
+Acknowledgments: I learned most of the stuffs from Professors lecture and it was not possible if all the lectures video were not available at slack. Once a time I was lost but most of the lecture videos were available at slack. So, it helped me to go through all the videos and understand the material. But also I want to give credit to my friend to help me finish this prediction model on Machine Learning Algorithms. He helped me with some great resources to understand this machine learning material more.  
+
+
+References:
+
+[1]. Chiarazzo, V.; Caggiani, L.; Marinelli, M.; Ottomanelli, M. A Neural Network based model for real estate price estimation considering environmental quality of property location. Transp. Res. Proc. 2014, 3, 810–817.[CrossRef]
+
+[2]. Yalpir, S.; Durduran, S.S.; Unel, F.B.; Yolcu, M. Creating a Valuation Map in GIS Through Artificial Neural Network Methodology: A Case Study. Acta Montan. Slovaca 2014, 19, 89–99.
+
+[3].`Liaw, A.; Wiener, M. Classification and regression by random Forest. R News 2002, 2, 18–22.ISPRS Int. J. Geo-Inf. 2018, 7, 168.
+
+[4]. Kuhn, M. Caret package. J. Stat. Softw. 2008, 28, 1–16.
+
+[5]. Fan, G.Z.; Ong, S.E.; Koh, H.C. Determinants of house price: A decision tree approach. Urban. Stud. 2006, 43, 2301–2315. [CrossRef]
+
+
+###########################################################################################################
+                                        Project Code
+###########################################################################################################
+
+
+####Libraries used in this project
+
+```{r}
+library(ggplot2)
+library(dplyr)
+getwd()
+```
+
+#Importing the dataset
+
+```{r}
+df<-read.csv("housing_data_2016_2017.csv", na.strings = c("") )
+```
+
+#Checking shape of the dataset
+
+```{r}
+dim(df)
+```
+
+#Checking name of the columns in dataset
+
+```{r}
+names(df)
+```
+
+#Extracting the columns names that are useful for predictive model
+
+```{r}
+mdf = names(df) %in% c("WorkTimeInSeconds","approx_year_built","community_district_num","coop_condo", "fuel_type",
+                      "kitchen_type", "maintenance_cost" , "num_bedrooms" , "num_floors_in_building",
+                      "num_full_bathrooms","num_total_rooms", 
+                     "sale_price", "sq_footage", "total_taxes",  "walk_score" )  #
+```
+
+#Making new dataframe from old one
+
+```{r}
+data = df[mdf] #include the above columns
+```
+
+#Checking new data
+
+```{r}
+head(data)
+```
+
+#Removing $ from the attributes values of dataset
+
+```{r}
+data$maintenance_cost = gsub("[\\$,]", "", data$maintenance_cost)
+data$sale_price = gsub("[\\$,]", "", data$sale_price)
+data$total_taxes = gsub("[\\$,]", "", data$total_taxes)
+
+
+head(data)
+```
+
+#Changing the data types of categorical variables
+
+```{r}
+data$maintenance_cost = as.numeric(data$maintenance_cost)
+data$sale_price = as.numeric(data$sale_price)
+data$total_taxes = as.numeric(data$total_taxes)
+data$WorkTimeInSeconds = as.numeric(as.character(data$WorkTimeInSeconds))
+
+head(data)
+```
+
+#Converting data types of attributes according to their relevant formation.
+
+```{r}
+data$coop_condo <- as.numeric(data$coop_condo)
+data$fuel_type <- as.numeric(data$fuel_type)
+data$kitchen_type <- as.numeric(data$kitchen_type)
+data$approx_year_built <- factor(data$approx_year_built)
+data$num_bedrooms <- factor(data$num_bedrooms)
+data$num_floors_in_building <- factor(data$num_floors_in_building)
+data$num_full_bathrooms <- factor(data$num_full_bathrooms)
+data$num_total_rooms <- factor(data$num_total_rooms)
+data$sq_footage = as.numeric(data$sq_footage)
+```
+
+#Checking again the missing values
+
+```{r}
+sapply(data, function(x) sum(is.na(x)))
+```
+
+#Droping the records that contain very low amount of missing values
+
+```{r}
+data = data[!is.na(data$approx_year_built),]
+data = data[!is.na(data$fuel_type),]
+data = data[!is.na(data$kitchen_type),]
+data = data[!is.na(data$num_total_rooms), ]
+data = data[!is.na(data$num_bedrooms),]
+data = data[!is.na(data$community_district_num),]
+
+sapply(data, function(x) sum(is.na(x)))
+```
+
+#Impute the missing values with mean
+
+```{r}
+meanmaint = mean(data$maintenance_cost, na.rm = T)
+data$maintenance_cost = ifelse(is.na(data$maintenance_cost), meanmaint,data$maintenance_cost)
+
+meansale = mean(data$sale_price, na.rm = T)
+data$sale_price = ifelse(is.na(data$sale_price), meansale,data$sale_price)
+
+meantax = mean(data$total_taxes, na.rm = T)
+data$total_taxes = ifelse(is.na(data$total_taxes), meantax,data$total_taxes)
+
+meanfootage = mean(data$sq_footage, na.rm = T)
+data$sq_footage = ifelse(is.na(data$sq_footage), meanfootage,data$sq_footage)
+
+meanwork = mean(data$WorkTimeInSeconds, na.rm = T)
+data$WorkTimeInSeconds = ifelse(is.na(data$WorkTimeInSeconds), meanwork,data$WorkTimeInSeconds)
+
+sapply(data, function(x) sum(is.na(x)))
+```
+
+#Impute the missing values with mean
+
+```{r}
+summary(data)
+```
+
+#Creating Training and Test part
+
+```{r}
+set.seed(1966)
+trainIndex <- caret::createDataPartition(data$sale_price, p = 0.7, list = FALSE)
+train <- data[trainIndex, ]
+test <- data[-trainIndex, ]
+```
+
+#######################################################################################################
+                                  Regression Tree Model
+#######################################################################################################
+
+#Regression Tree modeling
+
+```{r}
+library(rpart)
+dt <- rpart(data$sale_price ~ num_total_rooms + num_full_bathrooms + num_floors_in_building + num_bedrooms, data = data)
+```
+
+#Importance variables
+
+```{r}
+dt$variable.importance
+barplot(dt$variable.importance)
+```
+
+#Checking the train test split
+
+```{r}
+par(mfrow = c(1,2)) 
+rsq.rpart(dt)
+```
+
+#Summary of the Regression Tree model
+
+```{r}
+summary(dt)
+```
+
+#Regression Tree model diagram
+
+```{r}
+library(rpart.plot)
+rpart.plot(dt)
+```
+
+#Model Prediction
+
+```{r}
+fittedvalues = predict(dt, test)
+```
+
+#Now we can get the root mean squared error, a standardized measure of how off we were with our predicted values
+
+```{r}
+results <- cbind(fittedvalues, test$sale_price) 
+colnames(results) <- c('pred','real')
+results <- as.data.frame(results)
+```
+
+#Now let's take care of negative predictions! Lot's of ways to this, here's a more complicated way, but its a good example of creating a custom function for a custom problem:
+
+```{r}
+to_zero <- function(x){
+    if  (x < 0){
+        return(0)
+    }else{
+        return(x)
+    }
+}
+results$pred <- sapply(results$pred,to_zero)
+```
+
+#MSE (mean squared error):
+
+```{r}
+mse <- mean((results$real - results$pred) ^ 2)
+print(mse)
+```
+
+#Root mean squared error
+
+```{r}
+mse ^ 0.5
+```
+
+#Just the R-Squared Value for our model (just for the predictions)
+
+```{r}
+SSE = sum((results$pred - results$real) ^ 2)
+SST = sum((mean(data$sale_price) - results$real) ^ 2)
+
+R2 = 1 - SSE/SST
+R2
+```
+
+#######################################################################################################
+                                   Linear Regression Model
+#######################################################################################################
+
+#Linear Regresson Model
+
+```{r}
+lr = lm(data$sale_price ~ kitchen_type + num_floors_in_building + num_bedrooms + coop_condo + total_taxes, data = data)
+```
+
+#Summary of the model (OLS)
+
+```{r}
+summary(lr)
+```
+
+#Predicting the Random Forest Model
+
+```{r}
+plot(lr)
+```
+
+#######################################################################################################
+                                    Random Forest Model
+#######################################################################################################
+
+#Fitting the Random Forest model
+
+```{r}
+library(randomForest)
+library(rpart)
+tree_fit <- rpart::rpart(data$sale_price ~ kitchen_type + num_floors_in_building + num_bedrooms + coop_condo + num_total_rooms, data = data)
+```
+
+#Checking the importance of variable
+
+```{r}
+tree_fit$variable.importance
+barplot(tree_fit$variable.importance)
+```
+
+#Summary of the Random Forest Model 
+
+```{r}
+summary(tree_fit)
+```
+
+#Visualize the Model
+
+```{r}
+# Grab residuals
+res <- residuals(tree_fit)
+# Convert to DataFrame for gglpot
+res <- as.data.frame(res)
+
+head(res)
+```
+
+#Histogram of residuals
+
+```{r}
+ggplot(res, aes(res)) +  geom_histogram(fill = 'blue', alpha = 0.5)
+```
+
+#Random forest CP Table
+
+```{r}
+tree_fit$cptable
+```
+
+#Visualization of Random Forest CP table
+
+```{r}
+rpart::plotcp(tree_fit)
+```
+
+#Diagram of Random Forest
+
+```{r}
+library(rpart.plot)
+rpart.plot::rpart.plot(
+tree_fit,
+type = 2,
+branch = .8,
+under = TRUE)
+```
+
+#Predicting the Random Forest Model
+
+```{r}
+rf.pred <- predict(tree_fit, test)
+```
+
+#Now we can get the root mean squared error, a standardized measure of how off we were with our predicted values
+
+```{r}
+results <- cbind(rf.pred, test$sale_price) 
+colnames(results) <- c('pred','real')
+results <- as.data.frame(results)
+```
+
+#Now let's take care of negative predictions! Lot's of ways to this, here's a more complicated way, but its a good example of creating a custom function for a custom problem:
+
+```{r}
+to_zero <- function(x){
+    if  (x < 0){
+        return(0)
+    }else{
+        return(x)
+    }
+}
+results$pred <- sapply(results$pred, to_zero)
+```
+
+#MSE (mean squared error):
+
+```{r}
+mse <- mean((results$real - results$pred) ^ 2)
+print(mse)
+```
+
+#Root mean squared error
+
+```{r}
+mse ^ 0.5
+```
+
+#Just the R-Squared Value for our model (just for the predictions)
+
+```{r}
+SSE = sum((results$pred - results$real) ^ 2)
+SST = sum((mean(data$sale_price) - results$real) ^ 2)
+
+R2 = 1 - SSE/SST
+R2
+```
